@@ -1,13 +1,169 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --blue100: rgba(244, 246, 255, 1);
+  --blue200: rgba(240, 242, 255, 1);
+  --blue300: rgba(232, 236, 255, 1);
+  --blue400: rgba(217, 224, 255, 1);
+  --blue500: rgba(179, 192, 255, 1);
+  --blue600: rgba(104, 129, 255, 1);
+  --blue700: rgba(66, 98, 255, 1);
+  --blue800: rgba(69, 91, 237, 1);
+  --blue900: rgba(61, 81, 212, 1);
+  --indigo50: rgba(245, 245, 247, 1);
+  --indigo100: rgba(240, 240, 243, 1);
+  --indigo200: rgba(235, 235, 239, 1);
+  --indigo400: rgba(205, 204, 215, 1);
+  --indigo500: rgba(155, 153, 175, 1);
+  --indigo600: rgba(95, 92, 128, 1);
+  --indigo700: rgba(5, 0, 56, 1);
+  --indigoAlpha80: rgba(5, 0, 56, 0.8);
+  --indigoAlpha40: rgba(5, 0, 56, 0.4);
+  --indigoAlpha20: rgba(5, 0, 56, 0.2);
+  --indigoAlpha12: rgba(5, 0, 56, 0.12);
+  --indigoAlpha8: rgba(5, 0, 56, 0.08);
+  --indigoAlpha6: rgba(5, 0, 56, 0.06);
+  --indigoAlpha4: rgba(5, 0, 56, 0.04);
+  --green700: rgba(119, 204, 102, 1);
+  --black: rgba(9, 9, 9, 1);
+  --blackAlpha80: rgba(9, 9, 9, 0.8);
+  --blackAlpha40: rgba(9, 9, 9, 0.4);
+  --blackAlpha12: rgba(9, 9, 9, 0.12);
+  --white: rgba(255, 255, 255, 1);
+  --red50: rgba(254, 247, 247, 1);
+  --red100: rgba(253, 242, 242, 1);
+  --red400: rgba(247, 212, 212, 1);
+  --red600: rgba(225, 84, 84, 1);
+  --red700: rgba(217, 41, 41, 1);
+  --red800: rgba(199, 20, 20, 1);
+  --red900: rgba(184, 13, 13, 1);
+  --yellow100: rgba(255, 252, 243, 1);
+  --yellow400: rgba(255, 246, 213, 1);
+  --yellow700: rgba(255, 208, 47, 1);
+  --brandBlue700: rgba(63, 83, 217, 1);
+  --brandIndigo700: rgba(5, 0, 56, 1);
+  --brandPink700: rgba(255, 101, 117, 1);
+  --brandLightPink700: rgba(255, 191, 191, 1);
+  --brandYellow700: rgba(255, 208, 47, 1);
+  --whiteAlpha80: rgba(255, 255, 255, 0.8);
+  --whiteAlpha40: rgba(255, 255, 255, 0.4);
+  --whiteAlpha20: rgba(255, 255, 255, 0.2);
+  --whiteAlpha12: rgba(255, 255, 255, 0.12);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+.ChallengesListItem {
+  border: 1px solid var(--indigo200);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.ChallengesListItem:hover {
+  background-color: var(--blue100);
+  cursor: pointer;
+}
+
+.homeContainer {
+  width: 700px;
+  margin: 25px auto 0;
+}
+
+.title {
+  font-size: 18px;
+  color: var(--blackAlpha80);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description {
+  color: var(--blackAlpha40);
+  font-size: 14px;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.likes-box {
+  margin-top: 10px;
+}
+.likes-box .label {
+  color: var(--blue800);
+  font-size: 12px;
+}
+.likes-box .label::after {
+  content: '\2661';
+  font-size: 20px;
+}
+.likes-box .label.liked::after{
+  content: '\2665';
+  font-size: 20px;
+  color: red;
+}
+
+.likes-box .likes {
+  color: var(--blackAlpha40);
+  margin-left: 10px;
+}
+
+
+/* LoginForm */
+.LoginForm {
+  padding: 25px;
+  width: 350px;
+}
+
+.LoginForm :where(p, input, button){
+  margin-bottom: 20px;
+}
+
+/* Header */
+.Header{
+  height: 70px;
+  background-color: blueviolet;
+}
+
+.appName {
+  font-size: 24px;
+  margin-left: 10px;
+  color: #fff
+}
+
+.sortbyLabels{
+  font-size: 13px;
+}
+.sortbyLabels span {
+  margin:0 5px;
+  font-weight: normal;
+}
+.sortbyLabels span:hover {
+  cursor: pointer
+}
+.navbar {
+  background-color: var(--blue400);
+  color: var(--brandBlue700);
+}
+
+.hackDialog::backdrop{
+  background-color: #0000003b;
+}
+.hackDialog {
+  border: none;
+    box-shadow: 0px 2px 18px -4px #000000;
+    border-radius: 5px;
+    padding: 25px;
+    width: 500px;
+}
+.nav-item {
+  cursor: pointer;
+}
+.nav-link{
+  color: gray;
+}
+.nav-link.active {
+  color: #0b6efd !important;
 }
