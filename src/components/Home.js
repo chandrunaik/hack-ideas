@@ -18,7 +18,7 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="d-flex flex-column flex-fill">
       <AppContext.Provider value={{ activeTab, setActiveTab, loggedIn, username, challenges, storageEventHandler }}>
         <Header></Header>
         <HomeContent></HomeContent>

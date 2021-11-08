@@ -144,8 +144,8 @@
   cursor: pointer;
 }
 .navbar {
-  background-color: var(--blue400);
-  color: var(--brandBlue700);
+  background-color: rgb(69 90 236);
+  color: rgb(255 255 255);
 }
 
 .hackDialog::backdrop {
@@ -198,4 +198,9 @@
 }
 .uppercase{
   text-transform: uppercase;
+}
+.logout{
+  text-align: end;
+  font-size: 12px;
+  color: #fff;
 }

@@ -41,7 +41,7 @@ function ChallengesList(props) {
 
   if (!props.challenges.length) {
     return (
-      <div className="d-flex align-items-center justify-content-center mt-5 flex-column">
+      <div className="d-flex flex-fill align-items-center justify-content-center mt-5 flex-column">
         <img src={noDataImg} alt="" width="200" />
         <p className="mt-5">
           <strong>No challenges yet!</strong>

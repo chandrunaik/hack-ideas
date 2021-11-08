@@ -40,7 +40,7 @@ function HomeContent() {
   };
 
   return (
-    <div className="homeContainer">
+    <div className="homeContainer d-flex flex-fill flex-column">
       <HomeTabs></HomeTabs>
       <div className="my-5">
         <h4>{activeTab === "Home" ? "Home" : "My Submissions"}</h4>

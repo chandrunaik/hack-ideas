@@ -15,7 +15,7 @@ function Header() {
 
   if (loggedIn) {
     logoutButton = (
-      <div className="d-flex justify-content-end flex-column">
+      <div className="d-flex justify-content-end flex-column logout">
         <span>
           logged in as: <strong>{username}</strong>
         </span>
@@ -27,7 +27,7 @@ function Header() {
   }
 
   return (
-    <nav className="navbar d-flex justify-content-between">
+    <nav className="navbar d-flex justify-content-between px-3">
       <span className="navbar-brand">{APP_NAME}</span>
       {logoutButton}
     </nav>
