@@ -1,28 +1,13 @@
 import ChallengesListItem from "./ChallengesListItem";
 import ViewChallengeModal from "./ViewChallengeModal";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import noDataImg from "./../images/undraw_new_ideas_jdea.svg";
 import { AppContext } from "../Contexts/AppContext";
 
 function ChallengesList() {
   const [open, setOpen] = useState(false);
   const [challenge, setChallenge] = useState({});
-  const [challenges, setChallenges] = useState([]);
-
-  const storageEventHandler = () => {
-    setChallenges(JSON.parse(localStorage.getItem("challenges")) || []);
-  }
-
-  useEffect(() => {
-    storageEventHandler();
-  }, []);
-
- 
-  // context
-  const { activeTab, username } = useContext(AppContext);
-
-  // get challenges from local storage
-  //let challenges = JSON.parse(localStorage.getItem("challenges")) || [];
+  const { activeTab, username , challenges, storageEventHandler} = useContext(AppContext);
 
   let challengesArray;
   if (activeTab === "Home") {
@@ -41,7 +26,7 @@ function ChallengesList() {
   };
 
   const likedChallenge = (id) => {
-    let allChallenges = JSON.parse(localStorage.getItem("challenges")) || [];
+    let allChallenges = challenges;
 
     let index = allChallenges.findIndex((ch) => ch.id === id);
     allChallenges[index].likedBy.push(username);
@@ -51,7 +36,7 @@ function ChallengesList() {
   };
 
   const disLikedChallenge = (id) => {
-    let allChallenges = JSON.parse(localStorage.getItem("challenges")) || [];
+    let allChallenges = challenges;
     let index = allChallenges.findIndex((ch) => ch.id === id);
 
     let likeIndex = allChallenges[index].likedBy.findIndex((u) => u === username);
@@ -79,7 +64,7 @@ function ChallengesList() {
             return (
               <ChallengesListItem
                 challenge={challenge}
-                key={challenge.title}
+                key={challenge.id}
                 onClick={(challenge) => {
                   challengeClicked(challenge);
                 }}

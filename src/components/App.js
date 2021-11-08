@@ -1,7 +1,8 @@
 import Login from "./Login";
 import Home from "./Home";
 
-const loggedIn = localStorage.getItem('loggedIn') === "true"
+const loggedIn = JSON.parse(localStorage.getItem('loggedIn'));
+
 function App() {
   if (loggedIn) {
     return <Home></Home>;

@@ -1,7 +1,10 @@
 import ReactDOM from "react-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext} from "react";
+import { AppContext } from "../Contexts/AppContext";
 
 function AddNewChallengeModal(props) {
+  const {username, challenges, storageEventHandler } = useContext(AppContext)
+  
   const [challenge, setChallenge] = useState({
     title: "",
     description: "",
@@ -11,6 +14,7 @@ function AddNewChallengeModal(props) {
     likedBy: [],
     id: "",
   });
+
 
   useEffect(() => {
     if (props.open) {
@@ -43,8 +47,6 @@ function AddNewChallengeModal(props) {
       return;
     }
 
-    // get username
-    let username = localStorage.getItem("username");
     let createdDate = new Date().toISOString();
 
     // set username n date
@@ -55,15 +57,16 @@ function AddNewChallengeModal(props) {
     challenge.id = Date.now();
 
     // get and parse all challenges
-    let allChallenges = JSON.parse(localStorage.getItem("challenges")) || [];
+    let allChallenges = challenges;
 
     // add new challenge to challenges list
     allChallenges.push(challenge);
 
     // store it back in localstorage
     localStorage.setItem("challenges", JSON.stringify(allChallenges));
-    // props.onclose();
-    document.location.reload();
+    //document.location.reload();
+    storageEventHandler();
+    props.onclose();
   };
 
   return ReactDOM.createPortal(
