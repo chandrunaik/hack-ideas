@@ -4,17 +4,10 @@ import { useState, useContext } from "react";
 import noDataImg from "./../images/undraw_new_ideas_jdea.svg";
 import { AppContext } from "../Contexts/AppContext";
 
-function ChallengesList() {
+function ChallengesList(props) {
   const [open, setOpen] = useState(false);
   const [challenge, setChallenge] = useState({});
-  const { activeTab, username , challenges, storageEventHandler} = useContext(AppContext);
-
-  let challengesArray;
-  if (activeTab === "Home") {
-    challengesArray = challenges;
-  } else {
-    challengesArray = challenges.filter((ch) => ch.createdBy === username);
-  }
+  const { username , challenges, storageEventHandler} = useContext(AppContext);
 
   const closeModal = () => {
     setOpen(false);
@@ -46,7 +39,7 @@ function ChallengesList() {
     storageEventHandler();
   };
 
-  if (!challengesArray.length) {
+  if (!props.challenges.length) {
     return (
       <div className="d-flex align-items-center justify-content-center mt-5 flex-column">
         <img src={noDataImg} alt="" width="200" />
@@ -60,7 +53,7 @@ function ChallengesList() {
     return (
       <>
         <div className="ChallengesList mt-1">
-          {challengesArray.map((challenge) => {
+          {props.challenges.map((challenge) => {
             return (
               <ChallengesListItem
                 challenge={challenge}

@@ -17,7 +17,7 @@ function ChallengesListItem({ challenge , onClick, onLike, onDisLike}) {
 
   return (
     <div className="ChallengesListItem" onClick={() => { onClick(challenge) }}>
-      <div className="title mb-3">{challenge.title}</div>
+      <div className="title mb-3 uppercase">{challenge.title}</div>
       <div className="description mb-3">{challenge.description}</div>
       <div className="hTags mb-3">
         {challenge.tags.map(tag => {

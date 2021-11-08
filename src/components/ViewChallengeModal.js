@@ -19,7 +19,7 @@ function ViewChallengeModal(props) {
       <h5 className="mb-3">{props.challenge.title}</h5>
       <p className="mb-3">{props.challenge.description}</p>
       <div className="hTags mb-3">
-        {props.challenge.tags.map((tag) => {
+        {props.challenge.tags && props.challenge.tags.map((tag) => {
           return <span className="hTag small" key={tag}>{tag}</span>
         })}
       </div>
