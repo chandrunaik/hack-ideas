@@ -109,10 +109,13 @@
   color: var(--blackAlpha40);
   margin-left: 10px;
 }
+.login {
+  background-color: #0d6efd17;
+}
 
 /* LoginForm */
 .LoginForm {
-  padding: 25px;
+  margin-left: 100px;
   width: 350px;
 }
 

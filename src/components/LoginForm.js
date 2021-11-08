@@ -19,7 +19,7 @@ function LoginForm() {
   return (
     <div className="LoginForm">
       <form className="flex flex-column" onSubmit={submitForm} id="loginForm">
-        <label className="form-label">Login</label>
+        <label className="form-label mb-3">Login</label>
         <input
           type="text"
           onChange={handleChange}
