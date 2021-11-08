@@ -1,10 +1,11 @@
 import ReactDOM from "react-dom";
-import { useEffect, useState , useContext} from "react";
+import { useEffect, useState, useContext } from "react";
 import { AppContext } from "../Contexts/AppContext";
+import { TAGS } from "./../constants";
 
 function AddNewChallengeModal(props) {
-  const {username, challenges, storageEventHandler } = useContext(AppContext)
-  
+  const { username, challenges, storageEventHandler } = useContext(AppContext);
+
   const [challenge, setChallenge] = useState({
     title: "",
     description: "",
@@ -14,7 +15,6 @@ function AddNewChallengeModal(props) {
     likedBy: [],
     id: "",
   });
-
 
   useEffect(() => {
     if (props.open) {
@@ -34,6 +34,20 @@ function AddNewChallengeModal(props) {
       document.querySelector("#hackDialog").close();
     }
   }, [props]);
+
+  const tagSelected = (newTag) => {
+    let tags = challenge.tags;
+
+    if (tags.includes(newTag)) {
+      let index = tags.findIndex((tag) => tag === newTag);
+      tags.splice(index, 1) // improve
+      setChallenge({ ...challenge });
+    } else {
+      setChallenge({ ...challenge, tags : [...tags, newTag] });
+    }
+    // [0,1,3]
+    // []
+  };
 
   const closeModal = () => {
     props.onclose();
@@ -97,7 +111,19 @@ function AddNewChallengeModal(props) {
             required
           ></textarea>
         </div>
-        <div className="mb-3">TAGS:</div>
+        <div className="mb-3">
+          {TAGS.map((tag) => {
+            return (
+              <span
+                key={tag}
+                className={`hTag ${challenge.tags.includes(tag) ? 'active': ''}`}
+                onClick={() => tagSelected(tag)}
+              >
+                {tag}
+              </span>
+            );
+          })}
+        </div>
         <div className="mt-3 d-flex justify-content-end">
           <input className="btn btn-secondary" type="button" value="Cancel" onClick={closeModal} />
           <pre> </pre>

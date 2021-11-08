@@ -17,10 +17,14 @@ function ChallengesListItem({ challenge , onClick, onLike, onDisLike}) {
 
   return (
     <div className="ChallengesListItem" onClick={() => { onClick(challenge) }}>
-      <div className="title">{challenge.title}</div>
-      <div className="description">{challenge.description}</div>
+      <div className="title mb-3">{challenge.title}</div>
+      <div className="description mb-3">{challenge.description}</div>
+      <div className="hTags mb-3">
+        {challenge.tags.map(tag => {
+            return <span className="hTag small" key={tag}>{tag}</span>
+        })}
+      </div>
       <div className="likes-box d-flex align-items-center">
-
        {
          challenge.likedBy.includes(username) ? (
          <span className="label liked" onClick={(e)=>{dislikeChallenge(e, challenge.id)}}></span> 
@@ -28,7 +32,7 @@ function ChallengesListItem({ challenge , onClick, onLike, onDisLike}) {
           <span className="label" onClick={(e)=>{likeChallenge(e, challenge.id)}}></span>
          )
        } 
-        <span className="likes">{challenge.likedBy.length}</span>
+      <span className="likes">{challenge.likedBy.length}</span>
       </div>
     </div>
   );

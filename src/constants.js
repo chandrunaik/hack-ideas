@@ -1,1 +1,1 @@
-export const HOME = 'HOME' 
+export const TAGS = [ "security", "devops", "tech", "cloud", "data science", "ui",] 

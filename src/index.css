@@ -96,11 +96,11 @@
   font-size: 12px;
 }
 .likes-box .label::after {
-  content: '\2661';
+  content: "\2661";
   font-size: 20px;
 }
-.likes-box .label.liked::after{
-  content: '\2665';
+.likes-box .label.liked::after {
+  content: "\2665";
   font-size: 20px;
   color: red;
 }
@@ -110,19 +110,18 @@
   margin-left: 10px;
 }
 
-
 /* LoginForm */
 .LoginForm {
   padding: 25px;
   width: 350px;
 }
 
-.LoginForm :where(p, input, button){
+.LoginForm :where(p, input, button) {
   margin-bottom: 20px;
 }
 
 /* Header */
-.Header{
+.Header {
   height: 70px;
   background-color: blueviolet;
 }
@@ -130,40 +129,65 @@
 .appName {
   font-size: 24px;
   margin-left: 10px;
-  color: #fff
+  color: #fff;
 }
 
-.sortbyLabels{
+.sortbyLabels {
   font-size: 13px;
 }
 .sortbyLabels span {
-  margin:0 5px;
+  margin: 0 5px;
   font-weight: normal;
 }
 .sortbyLabels span:hover {
-  cursor: pointer
+  cursor: pointer;
 }
 .navbar {
   background-color: var(--blue400);
   color: var(--brandBlue700);
 }
 
-.hackDialog::backdrop{
+.hackDialog::backdrop {
   background-color: #0000003b;
 }
 .hackDialog {
   border: none;
-    box-shadow: 0px 2px 18px -4px #000000;
-    border-radius: 5px;
-    padding: 25px;
-    width: 500px;
+  box-shadow: 0px 2px 18px -4px #000000;
+  border-radius: 5px;
+  padding: 25px;
+  width: 500px;
 }
 .nav-item {
   cursor: pointer;
 }
-.nav-link{
+.nav-link {
   color: gray;
 }
 .nav-link.active {
   color: #0b6efd !important;
+}
+.hTag {
+  display: inline-block;
+  font-size: 12px;
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  user-select: none;
+}
+.hTag:hover {
+  cursor: pointer;
+}
+.hTag.active {
+  background-color: #0b6efd1c;
+  color: #0b6efd;
+  border: 1px solid #0b6efd;
+}
+.hTag.small {
+  padding: 5px;
+  font-size: 10px;
+  background: #0d6efd30;
+  border: 1px solid #fff;
+  color: #404040;
 }
