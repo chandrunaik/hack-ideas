@@ -42,19 +42,8 @@ function HomeContent() {
   return (
     <div className="homeContainer d-flex flex-fill flex-column">
       <HomeTabs></HomeTabs>
-      <div className="my-5">
-        <h4>{activeTab === "Home" ? "Home" : "My Submissions"}</h4>
-      </div>
-      <div className="d-flex justify-content-between align-items-end my-2">
-        <div className="sortbyLabels">
-          <span>SORT BY:</span>
-          <span onClick={sortByMostRecent} className={`'mx-2' ${sortBy === "recent" ? "bold" : ""}`}>
-            Most Recent
-          </span>
-          <span onClick={sortByMostLiked} className={`${sortBy === "likes" ? "bold" : ""}`}>
-            Most Liked
-          </span>
-        </div>
+      <div className="d-flex justify-content-between mt-5">
+        <h4>{activeTab === "Home" ? "Home" : "My Submissions"}</h4> 
         <button
           className="btn btn-success btn-sm"
           onClick={() => {
@@ -63,6 +52,17 @@ function HomeContent() {
         >
           + Add New Challenge
         </button>
+      </div>
+      <div className="d-flex align-items-end my-2">
+        <div className="sortbyLabels">
+          <span>SORT BY:</span>
+          <span onClick={sortByMostRecent} className={`mx-2 ${sortBy === "recent" ? "bold" : ""}`}>
+            Most Recent
+          </span>
+          <span onClick={sortByMostLiked} className={`${sortBy === "likes" ? "bold" : ""}`}>
+            Most Liked
+          </span>
+        </div>
       </div>
       <ChallengesList challenges={challengesArray}></ChallengesList>
       <AddNewChallengeModal
