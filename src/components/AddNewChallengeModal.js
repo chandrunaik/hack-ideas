@@ -1,37 +1,37 @@
-import ReactDOM from "react-dom";
-import { useEffect, useState, useContext } from "react";
-import { AppContext } from "../Contexts/AppContext";
-import { TAGS } from "./../constants";
+import ReactDOM from 'react-dom';
+import { useEffect, useState, useContext } from 'react';
+import { AppContext } from '../Contexts/AppContext';
+import { TAGS } from './../constants';
 
 function AddNewChallengeModal(props) {
-  const { username, challenges, storageEventHandler } = useContext(AppContext);
+  const { username, challenges, pristineChallenges, setPristineChallenges } = useContext(AppContext);
 
   const [challenge, setChallenge] = useState({
-    title: "",
-    description: "",
+    title: '',
+    description: '',
     tags: [],
-    createdBy: "",
-    createdDate: "",
+    createdBy: '',
+    createdDate: '',
     likedBy: [],
-    id: "",
+    id: '',
   });
 
   useEffect(() => {
     if (props.open) {
       // clear form
       setChallenge({
-        title: "",
-        description: "",
+        title: '',
+        description: '',
         tags: [],
-        createdBy: "",
-        createdDate: "",
+        createdBy: '',
+        createdDate: '',
         likedBy: [],
       });
       // show modal
-      document.querySelector("#hackDialog").showModal();
+      document.querySelector('#hackDialog').showModal();
     } else {
       // close modal
-      document.querySelector("#hackDialog").close();
+      document.querySelector('#hackDialog').close();
     }
   }, [props]);
 
@@ -40,10 +40,10 @@ function AddNewChallengeModal(props) {
 
     if (tags.includes(newTag)) {
       let index = tags.findIndex((tag) => tag === newTag);
-      tags.splice(index, 1) // improve
+      tags.splice(index, 1); // improve
       setChallenge({ ...challenge });
     } else {
-      setChallenge({ ...challenge, tags : [...tags, newTag] });
+      setChallenge({ ...challenge, tags: [...tags, newTag] });
     }
     // [0,1,3]
     // []
@@ -70,16 +70,12 @@ function AddNewChallengeModal(props) {
     // replace by uuid or nanoid package
     challenge.id = Date.now();
 
-    // get and parse all challenges
-    let allChallenges = challenges;
-
     // add new challenge to challenges list
-    allChallenges.push(challenge);
+    pristineChallenges.push(challenge);
 
     // store it back in localstorage
-    localStorage.setItem("challenges", JSON.stringify(allChallenges));
+    setPristineChallenges(pristineChallenges);
     //document.location.reload();
-    storageEventHandler();
     props.onclose();
   };
 
@@ -116,7 +112,7 @@ function AddNewChallengeModal(props) {
             return (
               <span
                 key={tag}
-                className={`hTag ${challenge.tags.includes(tag) ? 'active': ''}`}
+                className={`hTag ${challenge.tags.includes(tag) ? 'active' : ''}`}
                 onClick={() => tagSelected(tag)}
               >
                 {tag}
@@ -131,7 +127,7 @@ function AddNewChallengeModal(props) {
         </div>
       </form>
     </dialog>,
-    document.body
+    document.body,
   );
 }
 export default AddNewChallengeModal;

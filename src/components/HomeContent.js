@@ -1,49 +1,18 @@
-import { useState, useContext } from "react";
-import AddNewChallengeModal from "./AddNewChallengeModal";
-import ChallengesList from "./ChallengesList";
-import HomeTabs from "./HomeTabs";
-import { AppContext } from "../Contexts/AppContext";
+import { useState, useContext } from 'react';
+import AddNewChallengeModal from './AddNewChallengeModal';
+import ChallengesList from './ChallengesList';
+import HomeTabs from './HomeTabs';
+import { AppContext } from '../Contexts/AppContext';
 
 function HomeContent() {
-  const { activeTab, username, challenges } = useContext(AppContext);
-  const [sortBy, setSortBy] = useState("none");
+  const { activeTab, challenges, sortBy, setSortBy } = useContext(AppContext);
   const [open, setOpen] = useState(false);
-
-  let challengesArray = [];
-
-  if (activeTab === "Home") {
-    challengesArray = JSON.parse(JSON.stringify(challenges));
-  } else {
-    challengesArray = JSON.parse(JSON.stringify(challenges)).filter((ch) => ch.createdBy === username);
-  }
-
-  const sortByMostRecent = () => {
-    if (sortBy === "recent") {
-      challengesArray = JSON.parse(JSON.stringify(challenges));
-    } else {
-      challengesArray.sort((a, b) => {
-        return a.id > b.id ? -1 : a.id < b.id ? 1 : 0;
-      });
-    }
-    sortBy === "recent" ? setSortBy("none") : setSortBy("recent");
-  };
-
-  const sortByMostLiked = () => {
-    if (sortBy === "likes") {
-      challengesArray = JSON.parse(JSON.stringify(challenges));
-    } else {
-      challengesArray.sort((a, b) => {
-        return a.likedBy.length < b.likedBy.length ? -1 : a.likedBy.length > b.likedBy.length ? 1 : 0;
-      });
-    }
-    sortBy === "likes" ? setSortBy("none") : setSortBy("likes");
-  };
 
   return (
     <div className="homeContainer d-flex flex-fill flex-column">
       <HomeTabs></HomeTabs>
       <div className="d-flex justify-content-between mt-5">
-        <h4>{activeTab === "Home" ? "Home" : "My Submissions"}</h4> 
+        <h4>{activeTab === 'Home' ? 'Home' : 'My Submissions'}</h4>
         <button
           className="btn btn-success btn-sm"
           onClick={() => {
@@ -56,15 +25,25 @@ function HomeContent() {
       <div className="d-flex align-items-end my-2">
         <div className="sortbyLabels">
           <span>SORT BY:</span>
-          <span onClick={sortByMostRecent} className={`mx-2 ${sortBy === "recent" ? "bold" : ""}`}>
+          <span
+            onClick={() => {
+              setSortBy(sortBy === 'recents' ? 'none' : 'recents');
+            }}
+            className={`hsort mx-2 ${sortBy === 'recents' ? 'bold' : ''}`}
+          >
             Most Recent
           </span>
-          <span onClick={sortByMostLiked} className={`${sortBy === "likes" ? "bold" : ""}`}>
+          <span
+            onClick={() => {
+              setSortBy(sortBy  === 'likes'? 'none' : 'likes');
+            }}
+            className={`hsort ${sortBy === 'likes' ? 'bold' : ''}`}
+          >
             Most Liked
           </span>
         </div>
       </div>
-      <ChallengesList challenges={challengesArray}></ChallengesList>
+      <ChallengesList challenges={challenges}></ChallengesList>
       <AddNewChallengeModal
         open={open}
         onclose={() => {
