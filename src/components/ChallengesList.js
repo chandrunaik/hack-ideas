@@ -7,7 +7,11 @@ import { AppContext } from "../Contexts/AppContext";
 function ChallengesList(props) {
   const [open, setOpen] = useState(false);
   const [challenge, setChallenge] = useState({});
-  const { username , pristineChallenges, setPristineChallenges} = useContext(AppContext);
+  const { username , pristineChallenges, updateChallenges} = useContext(AppContext);
+
+  const copyArray = (arr) => {
+    return JSON.parse(JSON.stringify(arr));
+  };
 
   const closeModal = () => {
     setOpen(false);
@@ -19,20 +23,20 @@ function ChallengesList(props) {
   };
 
   const likedChallenge = (id) => {
-    let allChallenges = pristineChallenges;
+    let allChallenges = copyArray(pristineChallenges);
     let index = allChallenges.findIndex((ch) => ch.id === id);
    
     allChallenges[index].likedBy.push(username);
-    setPristineChallenges(allChallenges);
+    updateChallenges(allChallenges);
   };
 
   const disLikedChallenge = (id) => {
-    let allChallenges = pristineChallenges;
+    let allChallenges = copyArray(pristineChallenges);
     let index = allChallenges.findIndex((ch) => ch.id === id);
     let likeIndex = allChallenges[index].likedBy.findIndex((u) => u === username);
    
     allChallenges[index].likedBy.splice(likeIndex, 1);
-    setPristineChallenges(allChallenges);
+    updateChallenges(allChallenges);
   };
 
   if (!props.challenges.length) {

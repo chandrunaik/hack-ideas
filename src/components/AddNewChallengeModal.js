@@ -4,7 +4,7 @@ import { AppContext } from '../Contexts/AppContext';
 import { TAGS } from './../constants';
 
 function AddNewChallengeModal(props) {
-  const { username, challenges, pristineChallenges, setPristineChallenges } = useContext(AppContext);
+  const { username, pristineChallenges, updateChallenges } = useContext(AppContext);
 
   const [challenge, setChallenge] = useState({
     title: '',
@@ -70,12 +70,9 @@ function AddNewChallengeModal(props) {
     // replace by uuid or nanoid package
     challenge.id = Date.now();
 
-    // add new challenge to challenges list
-    pristineChallenges.push(challenge);
-
     // store it back in localstorage
-    setPristineChallenges(pristineChallenges);
-    //document.location.reload();
+    updateChallenges([...pristineChallenges, challenge]);
+    
     props.onclose();
   };
 
