@@ -43,43 +43,29 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    // reset sort on tab change
-    setSortBy('none');
-
-    if (activeTab === 'Home') {
-      setChallenges(() => {
-        return copyArray(pristineChallenges);
-      });
-    } else {
+    if (activeTab === 'Home' && sortBy === 'none') {
+      let allChallenges = copyArray(pristineChallenges);
+      
+      setChallenges(() => allChallenges);
+    } else if (activeTab === 'My Submissions' && sortBy === 'none') {
       let myChallenges = pristineChallenges.filter(filterByUsername);
+      
+      setChallenges(() => myChallenges);
+    } else {
+      let activeChallenges = copyArray(challenges);
+     
+      activeChallenges.sort(sortBy === 'recents' ? sortByRecents : sortByLikes);
+
       setChallenges(() => {
-        return myChallenges;
+        return activeChallenges;
       });
     }
-  }, [activeTab]);
+  }, [activeTab, sortBy]);
 
   useEffect(() => {
-    if (sortBy === 'none') {
-      if (activeTab === 'Home') {
-        setChallenges(() => {
-          return copyArray(pristineChallenges);
-        });
-      } else {
-        let myChallenges = pristineChallenges.filter(filterByUsername);
-        setChallenges(() => {
-          return myChallenges;
-        });
-      }
-    } else {
-      let copyChallenges = copyArray(challenges);
-      // sort
-      copyChallenges.sort(sortBy === 'recents' ? sortByRecents : sortByLikes);
-
-      setChallenges(() => {
-        return copyChallenges;
-      });
-    }
-  }, [sortBy]);
+    // reset sorting on tab change
+    setSortBy('none');
+  }, [activeTab]);
 
   return (
     <div className="d-flex flex-column flex-fill">
