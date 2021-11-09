@@ -3,6 +3,7 @@ import AddNewChallengeModal from './AddNewChallengeModal';
 import ChallengesList from './ChallengesList';
 import HomeTabs from './HomeTabs';
 import { AppContext } from '../Contexts/AppContext';
+import {SORTBY, TABS} from  './../constants'
 
 function HomeContent() {
   const { activeTab, challenges, sortBy, setSortBy } = useContext(AppContext);
@@ -12,7 +13,7 @@ function HomeContent() {
     <div className="homeContainer d-flex flex-fill flex-column">
       <HomeTabs></HomeTabs>
       <div className="d-flex justify-content-between mt-5">
-        <h4>{activeTab === 'Home' ? 'Home' : 'My Submissions'}</h4>
+        <h4>{activeTab === TABS.HOME ? TABS.HOME : TABS.MY_CHALLENGES}</h4>
         <button
           className="btn btn-success btn-sm"
           onClick={() => {
@@ -27,17 +28,17 @@ function HomeContent() {
           <span>SORT BY:</span>
           <span
             onClick={() => {
-              setSortBy(sortBy === 'recents' ? 'none' : 'recents');
+              setSortBy(sortBy === SORTBY.RECENTS ? SORTBY.NONE : SORTBY.RECENTS);
             }}
-            className={`hsort mx-2 ${sortBy === 'recents' ? 'bold' : ''}`}
+            className={`hsort mx-2 ${sortBy === SORTBY.RECENTS ? 'bold' : ''}`}
           >
             Most Recent
           </span>
           <span
             onClick={() => {
-              setSortBy(sortBy  === 'likes'? 'none' : 'likes');
+              setSortBy(sortBy  === SORTBY.LIKES? SORTBY.NONE : SORTBY.LIKES);
             }}
-            className={`hsort ${sortBy === 'likes' ? 'bold' : ''}`}
+            className={`hsort ${sortBy === SORTBY.LIKES ? 'bold' : ''}`}
           >
             Most Liked
           </span>

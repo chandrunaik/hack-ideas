@@ -2,7 +2,8 @@
 import Header from './Header';
 import HomeContent from './HomeContent';
 import { AppContext } from '../Contexts/AppContext';
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'; 
+import {SORTBY, TABS} from './../constants';
 
 const sortByRecents = (a, b) => {
   return a.id > b.id ? -1 : a.id < b.id ? 1 : 0;
@@ -17,10 +18,10 @@ function Home() {
   const username = localStorage.getItem('username');
   const loggedIn = localStorage.getItem('loggedIn');
 
-  const [activeTab, setActiveTab] = useState('Home');
+  const [activeTab, setActiveTab] = useState(TABS.HOME);
   const [pristineChallenges, setPristineChallenges] = useState(storedChallenges);
   const [challenges, setChallenges] = useState([]);
-  const [sortBy, setSortBy] = useState('none');
+  const [sortBy, setSortBy] = useState(SORTBY.NONE);
 
   const filterByUsername = (challenge) => {
     return challenge.createdBy === username;
@@ -38,23 +39,23 @@ function Home() {
   useEffect(() => {
     let allChallenges;
 
-    if (activeTab === 'Home') {
+    if (activeTab === TABS.HOME) {
       allChallenges = copyArray(pristineChallenges);
     } else {
       allChallenges = pristineChallenges.filter(filterByUsername);
     }
 
-    if (sortBy === 'none') {
+    if (sortBy === SORTBY.NONE) {
       setChallenges(() => allChallenges);
     } else {
-      allChallenges.sort(sortBy === 'recents' ? sortByRecents : sortByLikes);
+      allChallenges.sort(sortBy === SORTBY.RECENTS ? sortByRecents : sortByLikes);
       setChallenges(() => allChallenges);
     }
   }, [activeTab, sortBy, pristineChallenges]);
 
   useEffect(() => {
     // reset sorting on tab change
-    setSortBy('none');
+    setSortBy(SORTBY.NONE);
   }, [activeTab]);
 
   return (
