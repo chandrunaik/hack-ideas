@@ -1,6 +1,6 @@
 import Header from "./Header";
 import LoginForm from "./LoginForm";
-import wallpaper from "./../images/undraw_programming_-2-svr.svg";
+import wallpaper from "./../images/undraw_programming.svg";
 
 
 function Login() {
