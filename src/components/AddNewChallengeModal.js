@@ -4,7 +4,7 @@ import { AppContext } from '../Contexts/AppContext';
 import { TAGS } from './../constants';
 
 function AddNewChallengeModal(props) {
-  const { username, pristineChallenges, updateChallenges } = useContext(AppContext);
+  const { username, challenges, updateChallenges } = useContext(AppContext);
 
   const [challenge, setChallenge] = useState({
     title: '',
@@ -71,7 +71,7 @@ function AddNewChallengeModal(props) {
     challenge.id = Date.now();
 
     // store it back in localstorage
-    updateChallenges([...pristineChallenges, challenge]);
+    updateChallenges([...challenges, challenge]);
     
     props.onclose();
   };

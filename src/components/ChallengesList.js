@@ -3,15 +3,12 @@ import ViewChallengeModal from "./ViewChallengeModal";
 import { useState, useContext } from "react";
 import noDataImg from "./../images/undraw_new_ideas_jdea.svg";
 import { AppContext } from "../Contexts/AppContext";
+import { copyArray } from './../utils';
 
 function ChallengesList(props) {
   const [open, setOpen] = useState(false);
   const [challenge, setChallenge] = useState({});
-  const { username , pristineChallenges, updateChallenges} = useContext(AppContext);
-
-  const copyArray = (arr) => {
-    return JSON.parse(JSON.stringify(arr));
-  };
+  const { username , challenges, updateChallenges} = useContext(AppContext);
 
   const closeModal = () => {
     setOpen(false);
@@ -23,7 +20,7 @@ function ChallengesList(props) {
   };
 
   const likedChallenge = (id) => {
-    let allChallenges = copyArray(pristineChallenges);
+    let allChallenges = copyArray(challenges);
     let index = allChallenges.findIndex((ch) => ch.id === id);
    
     allChallenges[index].likedBy.push(username);
@@ -31,7 +28,7 @@ function ChallengesList(props) {
   };
 
   const disLikedChallenge = (id) => {
-    let allChallenges = copyArray(pristineChallenges);
+    let allChallenges = copyArray(challenges);
     let index = allChallenges.findIndex((ch) => ch.id === id);
     let likeIndex = allChallenges[index].likedBy.findIndex((u) => u === username);
    

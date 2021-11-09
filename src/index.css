@@ -55,6 +55,9 @@
   align-items: stretch;
   min-height: 100vh;
 }
+html{
+  background-color: rgb(69 90 236);
+}
 
 .ChallengesListItem {
   border: 1px solid rgb(195 195 195);
@@ -67,12 +70,13 @@
   background-color: var(--indigo50);
   cursor: pointer;
 }
-
 .homeContainer {
-  width: 800px;
-  padding: 25px;
-  border: 1px solid rgb(190 190 217);
-  margin: 10px auto;
+    width: 850px;
+    padding: 40px;
+    border: 1px solid rgb(227 227 227);
+    margin: 0px auto;
+    border-top: none;
+    border-bottom: none;
 }
 
 .title {
@@ -122,8 +126,10 @@
   width: 350px;
 }
 
-.LoginForm :where(p, input, button) {
-  margin-bottom: 20px;
+.hLoginLabel {
+  font-size: 14px;
+  color: gray;
+  font-weight: 500;
 }
 
 /* Header */
@@ -210,6 +216,9 @@
   color: #fff;
 }
 .hsort {
+  cursor: pointer;
+}
+.hPointer {
   cursor: pointer;
 }
 @media screen and (max-width: 800px) {

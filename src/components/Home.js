@@ -4,6 +4,7 @@ import HomeContent from './HomeContent';
 import { AppContext } from '../Contexts/AppContext';
 import { useState, useEffect } from 'react'; 
 import {SORTBY, TABS} from './../constants';
+import { copyArray } from './../utils';
 
 const sortByRecents = (a, b) => {
   return a.id > b.id ? -1 : a.id < b.id ? 1 : 0;
@@ -13,14 +14,14 @@ const sortByLikes = (a, b) => {
 };
 
 function Home() {
-  let storedChallenges = JSON.parse(localStorage.getItem('challenges')) || [];
-
   const username = localStorage.getItem('username');
   const loggedIn = localStorage.getItem('loggedIn');
-
+  
   const [activeTab, setActiveTab] = useState(TABS.HOME);
-  const [pristineChallenges, setPristineChallenges] = useState(storedChallenges);
-  const [challenges, setChallenges] = useState([]);
+  const storedChallenges = JSON.parse(localStorage.getItem('challenges')) || [];  
+
+  const [challenges, setChallenges] = useState(storedChallenges);
+  const [filteredChallenges, setFilteredChallenges] = useState([]);
   const [sortBy, setSortBy] = useState(SORTBY.NONE);
 
   const filterByUsername = (challenge) => {
@@ -28,33 +29,29 @@ function Home() {
   };
 
   const updateChallenges = (newChallenges) => {
-    setPristineChallenges(() => newChallenges);
+    setChallenges(() => newChallenges);
     localStorage.setItem('challenges', JSON.stringify(newChallenges));
-  };
-
-  const copyArray = (arr) => {
-    return JSON.parse(JSON.stringify(arr));
   };
 
   useEffect(() => {
     let allChallenges;
 
     if (activeTab === TABS.HOME) {
-      allChallenges = copyArray(pristineChallenges);
+      allChallenges = copyArray(challenges);
     } else {
-      allChallenges = pristineChallenges.filter(filterByUsername);
+      allChallenges = challenges.filter(filterByUsername);
     }
 
     if (sortBy === SORTBY.NONE) {
-      setChallenges(() => allChallenges);
+      setFilteredChallenges(() => allChallenges);
     } else {
       allChallenges.sort(sortBy === SORTBY.RECENTS ? sortByRecents : sortByLikes);
-      setChallenges(() => allChallenges);
+      setFilteredChallenges(() => allChallenges);
     }
-  }, [activeTab, sortBy, pristineChallenges]);
+  }, [activeTab, sortBy, challenges]);
 
   useEffect(() => {
-    // reset sorting on tab change
+    // reset sortBy on tab change
     setSortBy(SORTBY.NONE);
   }, [activeTab]);
 
@@ -63,13 +60,13 @@ function Home() {
       <AppContext.Provider
         value={{
           activeTab,
+          setActiveTab,
           loggedIn,
           username,
-          challenges,
           sortBy,
           setSortBy,
-          setActiveTab,
-          pristineChallenges,
+          challenges,
+          filteredChallenges,
           updateChallenges,
         }}
       >

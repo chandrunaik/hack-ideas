@@ -7,7 +7,7 @@ function Login() {
   return (
     <div className="d-flex flex-column flex-fill login">
       <Header></Header>
-      <div className="d-flex align-items-center flex-fill justify-content-center">
+      <div className="d-flex flex-fill  align-items-center justify-content-center">
         <img src={wallpaper} alt="wallpaper" width="500" />
         <LoginForm></LoginForm>
       </div>

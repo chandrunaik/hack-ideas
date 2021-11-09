@@ -1,13 +1,13 @@
-import {useContext} from 'react';
-import { AppContext } from "../Contexts/AppContext";
+import { useContext } from 'react';
+import { AppContext } from '../Contexts/AppContext';
 
-const APP_NAME = "Hack Ideas";
+const APP_NAME = 'Hack Ideas';
 
 function Header() {
-  const {loggedIn, username} = useContext(AppContext);
+  const { loggedIn, username } = useContext(AppContext);
 
   const logout = () => {
-    localStorage.setItem("loggedIn", false);
+    localStorage.setItem('loggedIn', false);
     document.location.reload();
   };
 
@@ -19,7 +19,9 @@ function Header() {
         <span>
           logged in as: <strong>{username}</strong>
         </span>
-        <span onClick={logout}>logout</span>
+        <span onClick={logout} className="hPointer">
+          logout
+        </span>
       </div>
     );
   } else {

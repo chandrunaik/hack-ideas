@@ -6,7 +6,7 @@ import { AppContext } from '../Contexts/AppContext';
 import {SORTBY, TABS} from  './../constants'
 
 function HomeContent() {
-  const { activeTab, challenges, sortBy, setSortBy } = useContext(AppContext);
+  const { activeTab, filteredChallenges, sortBy, setSortBy } = useContext(AppContext);
   const [open, setOpen] = useState(false);
 
   return (
@@ -44,7 +44,7 @@ function HomeContent() {
           </span>
         </div>
       </div>
-      <ChallengesList challenges={challenges}></ChallengesList>
+      <ChallengesList challenges={filteredChallenges}></ChallengesList>
       <AddNewChallengeModal
         open={open}
         onclose={() => {

@@ -1,29 +1,29 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function LoginForm() {
-  const [employeeNumber, setEmployeeNumber] = useState("");
+  const [employeeNumber, setEmployeeNumber] = useState('');
 
   const handleChange = (e) => {
     setEmployeeNumber(e.target.value);
   };
 
   const submitForm = (e) => {
-    e.preventDefault()
-    if(e.target.checkValidity()){
-      localStorage.setItem("loggedIn", true);
-      localStorage.setItem("username", employeeNumber);
+    e.preventDefault();
+    if (e.target.checkValidity()) {
+      localStorage.setItem('loggedIn', true);
+      localStorage.setItem('username', employeeNumber);
       document.location.reload();
     }
   };
 
   return (
     <div className="LoginForm">
-      <form className="flex flex-column" onSubmit={submitForm} id="loginForm">
-        <label className="form-label mb-3">Login</label>
+      <form className="flex flex-column" onSubmit={submitForm}>
+        <label className="mb-3 hLoginLabel">LOGIN TO HACK IDEAS</label>
         <input
           type="text"
           onChange={handleChange}
-          className="form-control"
+          className="form-control mb-3"
           placeholder="Enter employee number"
           maxLength={5}
           pattern="\d{5}"
