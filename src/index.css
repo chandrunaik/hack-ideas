@@ -148,9 +148,9 @@ html{
   color: gray;
 }
 .sortbyLabels span {
-  font-weight: normal;
+  margin-right: 10px;
 }
-.sortbyLabels span:hover {
+.sortbyItem span:hover {
   cursor: pointer;
 }
 .navbar {
