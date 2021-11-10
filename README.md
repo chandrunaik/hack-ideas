@@ -1,6 +1,6 @@
 # Hack Ideas React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Web app to create and manage hackathon ideas for organizations.
 
 ## Run production build
 
