@@ -1,14 +1,16 @@
-import ChallengesListItem from "./ChallengesListItem";
-import ViewChallengeModal from "./ViewChallengeModal";
-import { useState, useContext } from "react";
-import noDataImg from "./../images/undraw_new_ideas_jdea.svg";
-import { AppContext } from "../Contexts/AppContext";
-import { copyArray } from './../utils';
+import noDataImg from './../assets/images/undraw_new_ideas_jdea.svg';
+import {copyArray} from './../utils';
+import ChallengesListItem from './ChallengesListItem';
+import ViewChallengeModal from './ViewChallengeModal';
+
+import {AppContext} from '../Contexts/AppContext';
+
+import React, {useState, useContext} from 'react';
 
 function ChallengesList(props) {
   const [open, setOpen] = useState(false);
   const [challenge, setChallenge] = useState({});
-  const { username , challenges, updateChallenges} = useContext(AppContext);
+  const {username, challenges, updateChallenges} = useContext(AppContext);
 
   const closeModal = () => {
     setOpen(false);
@@ -20,18 +22,18 @@ function ChallengesList(props) {
   };
 
   const likedChallenge = (id) => {
-    let allChallenges = copyArray(challenges);
-    let index = allChallenges.findIndex((ch) => ch.id === id);
-   
+    const allChallenges = copyArray(challenges);
+    const index = allChallenges.findIndex((ch) => ch.id === id);
+
     allChallenges[index].likedBy.push(username);
     updateChallenges(allChallenges);
   };
 
   const disLikedChallenge = (id) => {
-    let allChallenges = copyArray(challenges);
-    let index = allChallenges.findIndex((ch) => ch.id === id);
-    let likeIndex = allChallenges[index].likedBy.findIndex((u) => u === username);
-   
+    const allChallenges = copyArray(challenges);
+    const index = allChallenges.findIndex((ch) => ch.id === id);
+    const likeIndex = allChallenges[index].likedBy.findIndex((u) => u === username);
+
     allChallenges[index].likedBy.splice(likeIndex, 1);
     updateChallenges(allChallenges);
   };

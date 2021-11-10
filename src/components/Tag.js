@@ -1,4 +1,6 @@
-function Tag({ tag, active, children, onClick }) {
+import React from 'react';
+
+function Tag({tag, active, children, onClick}) {
   return (
     <span className={`hTag ${active ? 'active' : ''}`} onClick={() => onClick(tag)}>
       {children}

@@ -1,5 +1,7 @@
-import Login from "./Login";
-import Home from "./Home";
+import Home from './Home';
+import Login from './Login';
+
+import React from 'react';
 
 const loggedIn = JSON.parse(localStorage.getItem('loggedIn'));
 

@@ -1,12 +1,12 @@
-import ReactDOM from "react-dom";
-import { useEffect } from "react";
+import React, {useEffect} from 'react';
+import ReactDOM from 'react-dom';
 
 function ViewChallengeModal(props) {
   useEffect(() => {
     if (props.open) {
-      document.querySelector("#viewHackDialog").showModal();
+      document.querySelector('#viewHackDialog').showModal();
     } else {
-      document.querySelector("#viewHackDialog").close();
+      document.querySelector('#viewHackDialog').close();
     }
   }, [props]);
 
@@ -20,9 +20,14 @@ function ViewChallengeModal(props) {
       <p className="addedByLabel">Added by: {props.challenge.createdBy}</p>
       <p className="mb-3 description">{props.challenge.description}</p>
       <div className="hTags mb-3">
-        {props.challenge.tags && props.challenge.tags.map((tag) => {
-          return <span className="hTag small" key={tag}>{tag}</span>
-        })}
+        {props.challenge.tags &&
+          props.challenge.tags.map((tag) => {
+            return (
+              <span className="hTag small" key={tag}>
+                {tag}
+              </span>
+            );
+          })}
       </div>
       <div className="mt-3 d-flex justify-content-end">
         <input className="btn btn-secondary" type="button" value="Cancel" onClick={closeModal} />

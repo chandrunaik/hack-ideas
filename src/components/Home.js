@@ -1,10 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import {SORTBY, TABS} from './../constants';
+import {copyArray} from './../utils';
 import Header from './Header';
 import HomeContent from './HomeContent';
-import { AppContext } from '../Contexts/AppContext';
-import { useState, useEffect } from 'react'; 
-import {SORTBY, TABS} from './../constants';
-import { copyArray } from './../utils';
+
+import {AppContext} from '../Contexts/AppContext';
+
+import React, {useState, useEffect} from 'react';
 
 const sortByRecents = (a, b) => {
   return a.id > b.id ? -1 : a.id < b.id ? 1 : 0;
@@ -16,9 +18,9 @@ const sortByLikes = (a, b) => {
 function Home() {
   const username = localStorage.getItem('username');
   const loggedIn = localStorage.getItem('loggedIn');
-  
+
   const [activeTab, setActiveTab] = useState(TABS.HOME);
-  const storedChallenges = JSON.parse(localStorage.getItem('challenges')) || [];  
+  const storedChallenges = JSON.parse(localStorage.getItem('challenges')) || [];
 
   const [challenges, setChallenges] = useState(storedChallenges);
   const [filteredChallenges, setFilteredChallenges] = useState([]);

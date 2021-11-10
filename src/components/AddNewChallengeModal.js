@@ -1,11 +1,13 @@
-import ReactDOM from 'react-dom';
-import { useEffect, useState, useContext } from 'react';
-import { AppContext } from '../Contexts/AppContext';
-import { TAGS } from './../constants';
+import {TAGS} from './../constants';
 import Tag from './Tag';
 
+import {AppContext} from '../Contexts/AppContext';
+
+import React, {useEffect, useState, useContext} from 'react';
+import ReactDOM from 'react-dom';
+
 function AddNewChallengeModal(props) {
-  const { username, challenges, updateChallenges } = useContext(AppContext);
+  const {username, challenges, updateChallenges} = useContext(AppContext);
 
   const [challenge, setChallenge] = useState({
     title: '',
@@ -37,14 +39,14 @@ function AddNewChallengeModal(props) {
   }, [props]);
 
   const tagSelected = (newTag) => {
-    let tags = challenge.tags;
+    const tags = challenge.tags;
 
     if (tags.includes(newTag)) {
-      let index = tags.findIndex((tag) => tag === newTag);
+      const index = tags.findIndex((tag) => tag === newTag);
       tags.splice(index, 1); // improve
-      setChallenge({ ...challenge });
+      setChallenge({...challenge});
     } else {
-      setChallenge({ ...challenge, tags: [...tags, newTag] });
+      setChallenge({...challenge, tags: [...tags, newTag]});
     }
     // [0,1,3]
     // []
@@ -62,10 +64,10 @@ function AddNewChallengeModal(props) {
       return;
     }
 
-    let createdDate = new Date().toISOString();
+    const createdDate = new Date().toISOString();
 
     // set username n date
-    //setChallenge({ ...challenge, createdBy: username, createdDate });
+    // setChallenge({ ...challenge, createdBy: username, createdDate });
     challenge.createdBy = username;
     challenge.createdDate = createdDate;
     // replace by uuid or nanoid package
@@ -73,7 +75,7 @@ function AddNewChallengeModal(props) {
 
     // store it back in localstorage
     updateChallenges([...challenges, challenge]);
-    
+
     props.onclose();
   };
 
@@ -88,7 +90,7 @@ function AddNewChallengeModal(props) {
             placeholder="Enter challenge title"
             value={challenge.title}
             onChange={(e) => {
-              setChallenge({ ...challenge, title: e.target.value });
+              setChallenge({...challenge, title: e.target.value});
             }}
             required
           />
@@ -100,7 +102,7 @@ function AddNewChallengeModal(props) {
             value={challenge.description}
             placeholder="Add chellnege description"
             onChange={(e) => {
-              setChallenge({ ...challenge, description: e.target.value });
+              setChallenge({...challenge, description: e.target.value});
             }}
             required
           ></textarea>
@@ -108,7 +110,9 @@ function AddNewChallengeModal(props) {
         <div className="mb-3">
           {TAGS.map((tag) => {
             return (
-               <Tag key={tag} active={challenge.tags.includes(tag)} onClick={tagSelected} tag={tag}>{tag}</Tag>
+              <Tag key={tag} active={challenge.tags.includes(tag)} onClick={tagSelected} tag={tag}>
+                {tag}
+              </Tag>
             );
           })}
         </div>
@@ -119,7 +123,7 @@ function AddNewChallengeModal(props) {
         </div>
       </form>
     </dialog>,
-    document.body,
+    document.body
   );
 }
 export default AddNewChallengeModal;

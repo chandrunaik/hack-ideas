@@ -1,13 +1,15 @@
-import { useState, useContext } from 'react';
+import {TABS} from './../constants';
 import AddNewChallengeModal from './AddNewChallengeModal';
 import ChallengesList from './ChallengesList';
 import HomeTabs from './HomeTabs';
 import Sorting from './Sorting';
-import { AppContext } from '../Contexts/AppContext';
-import { TABS } from './../constants';
+
+import {AppContext} from '../Contexts/AppContext';
+
+import React, {useState, useContext} from 'react';
 
 function HomeContent() {
-  const { activeTab, filteredChallenges } = useContext(AppContext);
+  const {activeTab, filteredChallenges} = useContext(AppContext);
   const [open, setOpen] = useState(false);
 
   return (

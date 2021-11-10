@@ -1,7 +1,8 @@
-import Header from "./Header";
-import LoginForm from "./LoginForm";
-import wallpaper from "./../images/undraw_programming.svg";
+import wallpaper from './../assets/images/undraw_programming.svg';
+import Header from './Header';
+import LoginForm from './LoginForm';
 
+import React from 'react';
 
 function Login() {
   return (

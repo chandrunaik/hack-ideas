@@ -1,8 +1,9 @@
-import { AppContext } from '../Contexts/AppContext';
-import { useContext } from 'react';
+import {AppContext} from '../Contexts/AppContext';
 
-function ChallengesListItem({ challenge, onClick, onLike, onDisLike }) {
-  const { username } = useContext(AppContext);
+import React, {useContext} from 'react';
+
+function ChallengesListItem({challenge, onClick, onLike, onDisLike}) {
+  const {username} = useContext(AppContext);
 
   const likeChallenge = (e, id) => {
     e.stopPropagation();

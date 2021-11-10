@@ -1,10 +1,11 @@
-import { useContext } from 'react';
-import { AppContext } from '../Contexts/AppContext';
+import {AppContext} from '../Contexts/AppContext';
+
+import React, {useContext} from 'react';
 
 const APP_NAME = 'Hack Ideas';
 
 function Header() {
-  const { loggedIn, username } = useContext(AppContext);
+  const {loggedIn, username} = useContext(AppContext);
 
   const logout = () => {
     localStorage.setItem('loggedIn', false);
