@@ -19,7 +19,7 @@ function Header() {
         <span>
           logged in as: <strong>{username}</strong>
         </span>
-        <span onClick={logout} className="hPointer">
+        <span onClick={logout} className="logoutLink">
           logout
         </span>
       </div>

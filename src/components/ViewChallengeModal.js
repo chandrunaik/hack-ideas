@@ -16,8 +16,9 @@ function ViewChallengeModal(props) {
 
   return ReactDOM.createPortal(
     <dialog className="hackDialog" id="viewHackDialog">
-      <h5 className="mb-3">{props.challenge.title}</h5>
-      <p className="mb-3">{props.challenge.description}</p>
+      <h5 className="mb-3 title">{props.challenge.title}</h5>
+      <p className="addedByLabel">Added by: {props.challenge.createdBy}</p>
+      <p className="mb-3 description">{props.challenge.description}</p>
       <div className="hTags mb-3">
         {props.challenge.tags && props.challenge.tags.map((tag) => {
           return <span className="hTag small" key={tag}>{tag}</span>

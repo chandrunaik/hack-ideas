@@ -14,7 +14,7 @@ function HomeContent() {
     <div className="homeContainer d-flex flex-fill flex-column">
       <HomeTabs></HomeTabs>
       <div className="d-flex justify-content-between my-4">
-        <h4>{activeTab === TABS.HOME ? 'All Challenges' : 'My Challenges'}</h4>
+        <h4 className="heading">{activeTab === TABS.HOME ? 'All Challenges' : 'My Challenges'}</h4>
         <button
           className="btn btn-success btn-sm"
           onClick={() => {

@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import { useEffect, useState, useContext } from 'react';
 import { AppContext } from '../Contexts/AppContext';
 import { TAGS } from './../constants';
+import Tag from './Tag';
 
 function AddNewChallengeModal(props) {
   const { username, challenges, updateChallenges } = useContext(AppContext);
@@ -107,13 +108,7 @@ function AddNewChallengeModal(props) {
         <div className="mb-3">
           {TAGS.map((tag) => {
             return (
-              <span
-                key={tag}
-                className={`hTag ${challenge.tags.includes(tag) ? 'active' : ''}`}
-                onClick={() => tagSelected(tag)}
-              >
-                {tag}
-              </span>
+               <Tag key={tag} active={challenge.tags.includes(tag)} onClick={tagSelected} tag={tag}>{tag}</Tag>
             );
           })}
         </div>

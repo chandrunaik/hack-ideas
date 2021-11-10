@@ -1,52 +1,13 @@
 :root {
-  --blue100: rgba(244, 246, 255, 1);
-  --blue200: rgba(240, 242, 255, 1);
-  --blue300: rgba(232, 236, 255, 1);
-  --blue400: rgba(217, 224, 255, 1);
-  --blue500: rgba(179, 192, 255, 1);
-  --blue600: rgba(104, 129, 255, 1);
-  --blue700: rgba(66, 98, 255, 1);
-  --blue800: rgba(69, 91, 237, 1);
-  --blue900: rgba(61, 81, 212, 1);
-  --indigo50: rgba(245, 245, 247, 1);
-  --indigo100: rgba(240, 240, 243, 1);
-  --indigo200: rgba(235, 235, 239, 1);
-  --indigo400: rgba(205, 204, 215, 1);
-  --indigo500: rgba(155, 153, 175, 1);
-  --indigo600: rgba(95, 92, 128, 1);
-  --indigo700: rgba(5, 0, 56, 1);
-  --indigoAlpha80: rgba(5, 0, 56, 0.8);
-  --indigoAlpha40: rgba(5, 0, 56, 0.4);
-  --indigoAlpha20: rgba(5, 0, 56, 0.2);
-  --indigoAlpha12: rgba(5, 0, 56, 0.12);
-  --indigoAlpha8: rgba(5, 0, 56, 0.08);
-  --indigoAlpha6: rgba(5, 0, 56, 0.06);
-  --indigoAlpha4: rgba(5, 0, 56, 0.04);
-  --green700: rgba(119, 204, 102, 1);
-  --black: rgba(9, 9, 9, 1);
-  --blackAlpha80: rgba(9, 9, 9, 0.8);
-  --blackAlpha40: rgba(9, 9, 9, 0.4);
-  --blackAlpha12: rgba(9, 9, 9, 0.12);
+  --blue: rgba(69, 90, 236, 1);
+  --blue100: rgba(69, 90, 236, 0.1);
+  --blue300: rgba(69, 90, 236, 0.3);
+  --black: rgba(0, 0, 0, 1);
+  --black100: rgba(0, 0, 0, 0.1);
+  --black200: rgba(0, 0, 0, 0.2);
+  --black700: rgba(0, 0, 0, 0.7);
   --white: rgba(255, 255, 255, 1);
-  --red50: rgba(254, 247, 247, 1);
-  --red100: rgba(253, 242, 242, 1);
-  --red400: rgba(247, 212, 212, 1);
-  --red600: rgba(225, 84, 84, 1);
-  --red700: rgba(217, 41, 41, 1);
-  --red800: rgba(199, 20, 20, 1);
-  --red900: rgba(184, 13, 13, 1);
-  --yellow100: rgba(255, 252, 243, 1);
-  --yellow400: rgba(255, 246, 213, 1);
-  --yellow700: rgba(255, 208, 47, 1);
-  --brandBlue700: rgba(63, 83, 217, 1);
-  --brandIndigo700: rgba(5, 0, 56, 1);
-  --brandPink700: rgba(255, 101, 117, 1);
-  --brandLightPink700: rgba(255, 191, 191, 1);
-  --brandYellow700: rgba(255, 208, 47, 1);
-  --whiteAlpha80: rgba(255, 255, 255, 0.8);
-  --whiteAlpha40: rgba(255, 255, 255, 0.4);
-  --whiteAlpha20: rgba(255, 255, 255, 0.2);
-  --whiteAlpha12: rgba(255, 255, 255, 0.12);
+  --red: rgba(255, 0, 0, 1);
 }
 
 #root {
@@ -55,69 +16,89 @@
   align-items: stretch;
   min-height: 100vh;
 }
-html{
-  background-color: rgb(69 90 236);
+
+html {
+  background-color: var(--blue);
+}
+
+body{
+  background-color: var(--white);
 }
 
 .ChallengesListItem {
-  border: 1px solid rgb(195 195 195);
+  border: 1px solid var(--black200);
   padding: 25px;
   border-radius: 10px;
   margin-bottom: 10px;
-  box-shadow: 0px 0px 6px 0px #e9e9e9;
+  box-shadow: 0px 0px 6px 0px var(--blue100);
 }
 .ChallengesListItem:hover {
-  background-color: var(--indigo50);
+  background-color: var(--blue100);
   cursor: pointer;
 }
 .homeContainer {
-    width: 850px;
-    padding: 40px;
-    border: 1px solid rgb(227 227 227);
-    margin: 0px auto;
-    border-top: none;
-    border-bottom: none;
+  width: 850px;
+  padding: 40px;
+  border: 1px solid var(--black100);
+  margin: 0px auto;
+  border-top: none;
+  border-bottom: none;
+}
+
+.heading {
+  color: var(--black700);
+  font-weight: 400;
 }
 
 .title {
   font-size: 18px;
-  color: var(--blackAlpha80);
+  color: var(--black);
+  font-weight: 300;
+}
+
+.title.overflowHidden{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .description {
-  color: var(--blackAlpha40);
+  color: var(--black700);
   font-size: 14px;
+}
+
+
+.description.overflowHidden {
   -webkit-line-clamp: 2;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
+.addedByLabel {
+  color: var(--blue);
+  font-size: 12px;
+}
+
 .likes-box {
   margin-top: 10px;
 }
 .likes-box .label {
-  color: var(--blue800);
+  color: var(--blue);
   font-size: 12px;
 }
 .likes-box .label::after {
-  content: "\2661";
-  font-size: 20px;
+  content: '\2661';
+  font-size: 25px;
 }
 .likes-box .label.liked::after {
-  content: "\2665";
-  font-size: 20px;
-  color: red;
+  content: '\2665';
+  font-size: 25px;
+  color: var(--red);
 }
 
 .likes-box .likes {
-  color: var(--blackAlpha40);
+  color: var(--black700);
   margin-left: 10px;
-}
-.login {
-  background-color: #0d6efd17;
+  font-size: 12px;
 }
 
 /* LoginForm */
@@ -128,24 +109,23 @@ html{
 
 .hLoginLabel {
   font-size: 14px;
-  color: gray;
+  color: var(--black700);
   font-weight: 500;
 }
 
 /* Header */
 .Header {
   height: 70px;
-  background-color: blueviolet;
 }
 .appName {
   font-size: 24px;
   margin-left: 10px;
-  color: #fff;
+  color: var(--white);
 }
 
 .sortbyLabels {
   font-size: 12px;
-  color: gray;
+  color: var(--black700);
 }
 .sortbyLabels span {
   margin-right: 10px;
@@ -154,33 +134,35 @@ html{
   cursor: pointer;
 }
 .navbar {
-  background-color: rgb(69 90 236);
+  background-color: var(--blue);
   color: rgb(255 255 255);
   height: 70px;
 }
-.hackDialog::backdrop {
-  background-color: #0000003b;
-}
 .hackDialog {
   border: none;
-  box-shadow: 0px 2px 18px -4px #000000;
+  box-shadow: 0px 2px 18px -4px var(--black700);
   border-radius: 5px;
   padding: 25px;
   width: 500px;
+}
+
+#viewHackDialog::backdrop,
+#hackDialog::backdrop {
+  background-color:rgba(0, 0, 0, 0.1);
 }
 .nav-item {
   cursor: pointer;
 }
 .nav-link {
-  color: gray;
+  color: var(--black700);
 }
 .nav-link.active {
-  color: #0b6efd !important;
+  color: var(--blue) !important;
 }
 .hTag {
   display: inline-block;
   font-size: 12px;
-  color: gray;
+  color: var(--black700);
   border: 1px solid rgb(190 190 217);
   border-radius: 10px;
   margin-right: 10px;
@@ -191,34 +173,29 @@ html{
   cursor: pointer;
 }
 .hTag.active {
-  background-color: #0b6efd1c;
-  color: #0b6efd;
+  background-color: var(--blue300);
+  color: var(--blue);
   border: 1px solid rgb(190 190 217);
 }
 .hTag.small {
   padding: 5px;
   font-size: 10px;
-  background: #0d6efd30;
-  border: 1px solid #fff;
-  color: #404040;
+  background: var(--blue300);
+  border: none;
+  color: var(--blue);
   border-radius: 5px;
 }
 
 .bold {
   font-weight: bold !important;
 }
-.uppercase {
-  text-transform: uppercase;
-}
 .logout {
   text-align: end;
   font-size: 12px;
-  color: #fff;
+  color: var(--white);
 }
-.hsort {
-  cursor: pointer;
-}
-.hPointer {
+.hsort,
+.logoutLink {
   cursor: pointer;
 }
 @media screen and (max-width: 800px) {
