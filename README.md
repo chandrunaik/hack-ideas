@@ -2,6 +2,26 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Run production build
+
+To run the application directly without setting up any dev tools, run below commands.
+
+```
+git clone git@github.com:chandrunaik/hack-ideas-react.git
+yarn global add serve
+cd hack-ideas-react
+serve -s build
+```
+
+## Setup development environment
+
+```
+git clone git@github.com:chandrunaik/hack-ideas-react.git
+cd hack-ideas-react
+yarn install
+yarn start
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
