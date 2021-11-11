@@ -24,7 +24,7 @@ function LoginForm() {
           type="text"
           onChange={handleChange}
           className="form-control mb-3"
-          placeholder="Enter employee number"
+          placeholder="Enter employee number (ex: 12345)"
           maxLength={5}
           pattern="\d{5}"
           required
