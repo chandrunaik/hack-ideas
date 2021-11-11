@@ -5,12 +5,13 @@ import ViewChallengeModal from './ViewChallengeModal';
 
 import {AppContext} from '../Contexts/AppContext';
 
-import React, {useState, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 
 function ChallengesList(props) {
   const [open, setOpen] = useState(false);
   const [challenge, setChallenge] = useState({});
-  const {username, challenges, updateChallenges} = useContext(AppContext);
+  const [loading, setLoading] = useState(false);
+  const {username, challenges, updateChallenges, activeTab, sortBy} = useContext(AppContext);
 
   const closeModal = () => {
     setOpen(false);
@@ -37,6 +38,22 @@ function ChallengesList(props) {
     allChallenges[index].likedBy.splice(likeIndex, 1);
     updateChallenges(allChallenges);
   };
+
+  // dummy spinner
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, [challenges, activeTab, sortBy]);
+
+  if (loading) {
+    return (
+      <div className="d-flex flex-fill align-items-center justify-content-center">
+        <div className="spinner-border text-secondary" role="status"></div>
+      </div>
+    );
+  }
 
   if (!props.challenges.length) {
     return <NoChallengesBanner></NoChallengesBanner>;
