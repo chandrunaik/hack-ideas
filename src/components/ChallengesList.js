@@ -44,7 +44,7 @@ function ChallengesList(props) {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 500);
+    }, 300);
   }, [challenges, activeTab, sortBy]);
 
   if (loading) {
