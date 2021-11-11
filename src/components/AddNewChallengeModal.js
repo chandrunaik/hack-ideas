@@ -100,7 +100,7 @@ function AddNewChallengeModal(props) {
             className="form-control"
             rows="5"
             value={challenge.description}
-            placeholder="Add chellnege description"
+            placeholder="Add challenge description"
             onChange={(e) => {
               setChallenge({...challenge, description: e.target.value});
             }}
