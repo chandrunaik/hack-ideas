@@ -23,8 +23,8 @@ function ChallengesListItem({challenge, onClick, onLike, onDisLike}) {
       }}
     >
       <div className="title mb-3 overflowHidden">{challenge.title}</div>
-      <div className="description overflowHidden mb-3">{challenge.description}</div>
-      <div className="hTags mb-3">
+      <div className="description overflowHidden mb-2">{challenge.description}</div>
+      <div className="hTags mb-2">
         {challenge.tags.map((tag) => {
           return (
             <span className="hTag small" key={tag}>

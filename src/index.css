@@ -68,9 +68,7 @@ body {
   color: var(--blue);
   font-size: 12px;
 }
-.likes-box {
-  margin-top: 10px;
-}
+
 .likes-box .label {
   color: var(--blue);
   font-size: 12px;
