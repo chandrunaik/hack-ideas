@@ -15,8 +15,8 @@ function HomeContent() {
   return (
     <div className="homeContainer d-flex flex-fill flex-column">
       <HomeTabs></HomeTabs>
-      <div className="d-flex justify-content-between my-4">
-        <h4 className="heading">{activeTab === TABS.HOME ? 'All Challenges' : 'My Challenges'}</h4>
+      <div className="d-flex justify-content-between my-5 align-items-center">
+        <h4 className="heading m-0">{activeTab === TABS.HOME ? 'All Challenges' : 'My Challenges'}</h4>
         <button
           className="btn btn-success btn-sm"
           onClick={() => {
