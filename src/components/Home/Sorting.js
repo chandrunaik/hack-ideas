@@ -1,6 +1,5 @@
-import {SORTBY} from './../constants';
-
-import {AppContext} from '../Contexts/AppContext';
+import {SORTBY} from './../../constants';
+import {AppContext} from './../../Contexts/AppContext';
 
 import React, {useContext} from 'react';
 

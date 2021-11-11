@@ -1,10 +1,9 @@
-import {TABS} from './../constants';
-import AddNewChallengeModal from './AddNewChallengeModal';
+import {TABS} from './../../constants';
+import {AppContext} from './../../Contexts/AppContext';
+import AddNewChallengeModal from './../Modals/AddNewChallengeModal';
 import ChallengesList from './ChallengesList';
 import HomeTabs from './HomeTabs';
 import Sorting from './Sorting';
-
-import {AppContext} from '../Contexts/AppContext';
 
 import React, {useState, useContext} from 'react';
 

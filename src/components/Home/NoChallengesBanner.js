@@ -1,4 +1,4 @@
-import noDataImg from './../assets/images/undraw_new_ideas_jdea.svg';
+import noDataImg from './../../assets/images/undraw_new_ideas_jdea.svg';
 
 import React from 'react';
 

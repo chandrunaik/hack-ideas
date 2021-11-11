@@ -1,10 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {SORTBY, TABS} from './../constants';
-import {copyArray} from './../utils';
-import Header from './Header';
+import {SORTBY, TABS} from './../../constants';
+import {AppContext} from './../../Contexts/AppContext';
+import {copyArray} from './../../utils';
+import Header from './../common/Header';
 import HomeContent from './HomeContent';
-
-import {AppContext} from '../Contexts/AppContext';
 
 import React, {useState, useEffect} from 'react';
 

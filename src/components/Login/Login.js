@@ -1,5 +1,5 @@
-import wallpaper from './../assets/images/undraw_programming.svg';
-import Header from './Header';
+import wallpaper from './../../assets/images/undraw_programming.svg';
+import Header from './../common/Header';
 import LoginForm from './LoginForm';
 
 import React from 'react';

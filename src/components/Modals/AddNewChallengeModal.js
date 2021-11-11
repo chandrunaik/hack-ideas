@@ -1,7 +1,6 @@
-import {TAGS} from './../constants';
-import Tag from './Tag';
-
-import {AppContext} from '../Contexts/AppContext';
+import {TAGS} from './../../constants';
+import {AppContext} from './../../Contexts/AppContext';
+import Tag from './../common/Tag';
 
 import React, {useEffect, useState, useContext} from 'react';
 import ReactDOM from 'react-dom';

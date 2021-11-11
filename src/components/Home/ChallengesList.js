@@ -1,9 +1,8 @@
-import {copyArray} from './../utils';
+import {AppContext} from './../../Contexts/AppContext';
+import {copyArray} from './../../utils';
+import ViewChallengeModal from './../Modals/ViewChallengeModal';
 import ChallengesListItem from './ChallengesListItem';
 import NoChallengesBanner from './NoChallengesBanner';
-import ViewChallengeModal from './ViewChallengeModal';
-
-import {AppContext} from '../Contexts/AppContext';
 
 import React, {useState, useEffect, useContext} from 'react';
 

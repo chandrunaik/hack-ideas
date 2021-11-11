@@ -1,6 +1,5 @@
-import {TABS} from './../constants';
-
-import {AppContext} from '../Contexts/AppContext';
+import {TABS} from './../../constants';
+import {AppContext} from './../../Contexts/AppContext';
 
 import React, {useContext} from 'react';
 
