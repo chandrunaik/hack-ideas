@@ -18,7 +18,7 @@
 html {
   background-color: var(--blue);
 }
-body{
+body {
   background-color: var(--white);
 }
 .ChallengesListItem {
@@ -49,7 +49,7 @@ body{
   color: var(--black);
   font-weight: 300;
 }
-.title.overflowHidden{
+.title.overflowHidden {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -117,6 +117,7 @@ body{
 }
 .sortbyItem span:hover {
   cursor: pointer;
+  text-decoration: underline;
 }
 .navbar {
   background-color: var(--blue);
@@ -132,7 +133,7 @@ body{
 }
 #viewHackDialog::backdrop,
 #hackDialog::backdrop {
-  background-color:rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .nav-item {
   cursor: pointer;
@@ -182,6 +183,13 @@ body{
 .logoutLink {
   cursor: pointer;
 }
+
+.NoChallengesBanner p {
+  font-size: 13px;
+  color: var(--black700);
+  margin: 10px 0 0;
+}
+
 @media screen and (max-width: 800px) {
   .homeContainer {
     width: 95%;
@@ -189,11 +197,11 @@ body{
   }
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1000px) {
   .LoginForm {
     margin: auto;
   }
-  .login img{
-      display:none;
+  .login img {
+    display: none;
   }
 }

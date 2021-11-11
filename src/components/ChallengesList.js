@@ -1,6 +1,6 @@
-import noDataImg from './../assets/images/undraw_new_ideas_jdea.svg';
 import {copyArray} from './../utils';
 import ChallengesListItem from './ChallengesListItem';
+import NoChallengesBanner from './NoChallengesBanner';
 import ViewChallengeModal from './ViewChallengeModal';
 
 import {AppContext} from '../Contexts/AppContext';
@@ -39,15 +39,7 @@ function ChallengesList(props) {
   };
 
   if (!props.challenges.length) {
-    return (
-      <div className="d-flex flex-fill align-items-center justify-content-center mt-5 flex-column">
-        <img src={noDataImg} alt="" width="200" />
-        <p className="mt-5">
-          <strong>No challenges yet!</strong>
-        </p>
-        <p> Click on Add New Challenge to add the first challenge.</p>
-      </div>
-    );
+    return <NoChallengesBanner></NoChallengesBanner>;
   } else {
     return (
       <>
