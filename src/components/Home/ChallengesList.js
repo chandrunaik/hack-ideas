@@ -1,5 +1,4 @@
 import {AppContext} from './../../Contexts/AppContext';
-import {copyArray} from './../../utils';
 import ViewChallengeModal from './../Modals/ViewChallengeModal';
 import ChallengesListItem from './ChallengesListItem';
 import NoChallengesBanner from './NoChallengesBanner';
@@ -16,26 +15,39 @@ function ChallengesList(props) {
     setOpen(false);
   };
 
-  const challengeClicked = (challenge) => {
+  const handleChallengeClick = (challenge) => {
     setChallenge(challenge);
     setOpen(true);
   };
 
-  const likedChallenge = (id) => {
-    const allChallenges = copyArray(challenges);
-    const index = allChallenges.findIndex((ch) => ch.id === id);
-
-    allChallenges[index].likedBy.push(username);
-    updateChallenges(allChallenges);
+  const handleLike = (id) => {
+    const updatedArray = challenges.map((challenge) => {
+      if (challenge.id === id) {
+        return {
+          ...challenge,
+          likedBy: [...challenge.likedBy, username],
+        };
+      } else {
+        return challenge;
+      }
+    });
+    updateChallenges(updatedArray);
   };
 
-  const disLikedChallenge = (id) => {
-    const allChallenges = copyArray(challenges);
-    const index = allChallenges.findIndex((ch) => ch.id === id);
-    const likeIndex = allChallenges[index].likedBy.findIndex((u) => u === username);
-
-    allChallenges[index].likedBy.splice(likeIndex, 1);
-    updateChallenges(allChallenges);
+  const handleDisLike = (id) => {
+    const updatedArray = challenges.map((challenge) => {
+      if (challenge.id === id) {
+        // remove disliked username from likes array
+        const likedBy = challenge.likedBy.filter((u) => u !== username);
+        return {
+          ...challenge,
+          likedBy,
+        };
+      } else {
+        return challenge;
+      }
+    });
+    updateChallenges(updatedArray);
   };
 
   // dummy spinner
@@ -66,13 +78,13 @@ function ChallengesList(props) {
                 challenge={challenge}
                 key={challenge.id}
                 onClick={(challenge) => {
-                  challengeClicked(challenge);
+                  handleChallengeClick(challenge);
                 }}
                 onLike={(id) => {
-                  likedChallenge(id);
+                  handleLike(id);
                 }}
                 onDisLike={(id) => {
-                  disLikedChallenge(id);
+                  handleDisLike(id);
                 }}
               ></ChallengesListItem>
             );
