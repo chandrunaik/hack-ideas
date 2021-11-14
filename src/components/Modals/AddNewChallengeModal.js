@@ -34,20 +34,17 @@ function AddNewChallengeModal({open, onclose}) {
   }, [open]);
 
   const handleTagClick = (newTag) => {
-    // add if not present else remove
-    const tags = [...challenge.tags];
+    let tags;
 
-    if (tags.includes(newTag)) {
-      const index = tags.findIndex((tag) => tag === newTag);
-      tags.splice(index, 1);
-      setChallenge((prevState) => {
-        return {...prevState, tags};
-      });
+    if (challenge.tags.includes(newTag)) {
+      tags = challenge.tags.filter((t) => t !== newTag);
     } else {
-      setChallenge((prevState) => {
-        return {...prevState, tags: [...prevState.tags, newTag]};
-      });
+      tags = [...challenge.tags, newTag];
     }
+
+    setChallenge((prevState) => {
+      return {...prevState, tags};
+    });
   };
 
   const closeModal = () => {
