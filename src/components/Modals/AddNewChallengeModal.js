@@ -2,38 +2,34 @@ import {TAGS} from './../../constants';
 import {AppContext} from './../../Contexts/AppContext';
 import Tag from './../common/Tag';
 
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useEffect, useState, useContext, useRef} from 'react';
 import ReactDOM from 'react-dom';
+
+const initialState = {
+  title: '',
+  description: '',
+  tags: [],
+  createdBy: '',
+  createdDate: '',
+  likedBy: [],
+  id: '',
+};
 
 function AddNewChallengeModal(props) {
   const {username, challenges, updateChallenges} = useContext(AppContext);
+  const modalRef = useRef();
 
-  const [challenge, setChallenge] = useState({
-    title: '',
-    description: '',
-    tags: [],
-    createdBy: '',
-    createdDate: '',
-    likedBy: [],
-    id: '',
-  });
+  const [challenge, setChallenge] = useState(initialState);
 
   useEffect(() => {
     if (props.open) {
       // clear form
-      setChallenge({
-        title: '',
-        description: '',
-        tags: [],
-        createdBy: '',
-        createdDate: '',
-        likedBy: [],
-      });
+      setChallenge(initialState);
       // show modal
-      document.querySelector('#hackDialog').showModal();
+      modalRef.current.showModal();
     } else {
       // close modal
-      document.querySelector('#hackDialog').close();
+      modalRef.current.close();
     }
   }, [props]);
 
@@ -79,7 +75,7 @@ function AddNewChallengeModal(props) {
   };
 
   return ReactDOM.createPortal(
-    <dialog className="hackDialog" id="hackDialog">
+    <dialog className="hModal" ref={modalRef}>
       <h5 className="mb-3">Add New Challenge</h5>
       <form onSubmit={submitForm}>
         <div className="mb-3">

@@ -122,15 +122,14 @@ body {
   color: rgb(255 255 255);
   height: 70px;
 }
-.hackDialog {
+.hModal {
   border: none;
   box-shadow: 0px 2px 18px -4px var(--black700);
   border-radius: 5px;
   padding: 25px;
   width: 500px;
 }
-#viewHackDialog::backdrop,
-#hackDialog::backdrop {
+.hModal::backdrop {
   background-color: rgba(0, 0, 0, 0.1);
 }
 .nav-item {

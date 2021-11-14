@@ -1,12 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import ReactDOM from 'react-dom';
 
 function ViewChallengeModal(props) {
+  const modalRef = useRef();
+
   useEffect(() => {
     if (props.open) {
-      document.querySelector('#viewHackDialog').showModal();
+      modalRef.current.showModal();
     } else {
-      document.querySelector('#viewHackDialog').close();
+      modalRef.current.close();
     }
   }, [props]);
 
@@ -15,7 +17,7 @@ function ViewChallengeModal(props) {
   };
 
   return ReactDOM.createPortal(
-    <dialog className="hackDialog" id="viewHackDialog">
+    <dialog className="hModal" ref={modalRef}>
       <h5 className="mb-3 title">{props.challenge.title}</h5>
       <p className="addedByLabel">Added by: {props.challenge.createdBy}</p>
       <p className="mb-3 description">{props.challenge.description}</p>
