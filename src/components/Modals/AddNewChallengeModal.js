@@ -15,14 +15,14 @@ const initialState = {
   id: '',
 };
 
-function AddNewChallengeModal(props) {
+function AddNewChallengeModal({open, onclose}) {
   const {username, challenges, updateChallenges} = useContext(AppContext);
   const modalRef = useRef();
 
   const [challenge, setChallenge] = useState(initialState);
 
   useEffect(() => {
-    if (props.open) {
+    if (open) {
       // clear form
       setChallenge(initialState);
       // show modal
@@ -31,7 +31,7 @@ function AddNewChallengeModal(props) {
       // close modal
       modalRef.current.close();
     }
-  }, [props]);
+  }, [open]);
 
   const handleTagClick = (newTag) => {
     // add if not present else remove
@@ -51,30 +51,19 @@ function AddNewChallengeModal(props) {
   };
 
   const closeModal = () => {
-    props.onclose();
+    onclose();
   };
 
   const submitForm = (e) => {
     e.preventDefault();
-
-    // check form is valid
-    if (!e.target.checkValidity) {
-      return;
-    }
-
-    const createdDate = new Date().toISOString();
-
-    // set username n date
-    // setChallenge({ ...challenge, createdBy: username, createdDate });
-    challenge.createdBy = username;
-    challenge.createdDate = createdDate;
-    // replace by uuid or nanoid package
-    challenge.id = Date.now();
-
+    // return if form is not valid
+    if (!e.target.checkValidity) return;
+    const createdDate = new Date().toISOString(); // utc date and time
+    const id = Date.now(); // milliSeconds
     // store it back in localstorage
-    updateChallenges([...challenges, challenge]);
-
-    props.onclose();
+    updateChallenges([...challenges, {...challenge, id, createdDate, createdBy: username}]);
+    // clode modal
+    onclose();
   };
 
   return ReactDOM.createPortal(
