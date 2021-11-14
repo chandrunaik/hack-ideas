@@ -33,18 +33,21 @@ function AddNewChallengeModal(props) {
     }
   }, [props]);
 
-  const tagSelected = (newTag) => {
-    const tags = challenge.tags;
+  const handleTagClick = (newTag) => {
+    // add if not present else remove
+    const tags = [...challenge.tags];
 
     if (tags.includes(newTag)) {
       const index = tags.findIndex((tag) => tag === newTag);
-      tags.splice(index, 1); // improve
-      setChallenge({...challenge});
+      tags.splice(index, 1);
+      setChallenge((prevState) => {
+        return {...prevState, tags};
+      });
     } else {
-      setChallenge({...challenge, tags: [...tags, newTag]});
+      setChallenge((prevState) => {
+        return {...prevState, tags: [...prevState.tags, newTag]};
+      });
     }
-    // [0,1,3]
-    // []
   };
 
   const closeModal = () => {
@@ -105,7 +108,7 @@ function AddNewChallengeModal(props) {
         <div className="mb-3">
           {TAGS.map((tag) => {
             return (
-              <Tag key={tag} active={challenge.tags.includes(tag)} onClick={tagSelected} tag={tag}>
+              <Tag key={tag} active={challenge.tags.includes(tag)} onClick={handleTagClick} tag={tag}>
                 {tag}
               </Tag>
             );
