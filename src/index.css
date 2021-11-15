@@ -21,13 +21,6 @@ html {
 body {
   background-color: var(--white);
 }
-.ChallengesListItem {
-  border: 1px solid var(--black200);
-  padding: 25px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  box-shadow: 0px 0px 6px 0px var(--blue100);
-}
 .ChallengesListItem:hover {
   background-color: var(--blue100);
   cursor: pointer;
@@ -123,14 +116,10 @@ body {
   height: 70px;
 }
 .hModal {
-  border: none;
-  box-shadow: 0px 2px 18px -4px var(--black700);
-  border-radius: 5px;
-  padding: 25px;
   width: 500px;
 }
 .hModal::backdrop {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .nav-item {
   cursor: pointer;
@@ -168,9 +157,6 @@ body {
   border-radius: 5px;
 }
 
-.bold {
-  font-weight: bold !important;
-}
 .logout {
   text-align: end;
   font-size: 12px;

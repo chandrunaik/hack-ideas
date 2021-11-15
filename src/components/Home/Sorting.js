@@ -22,7 +22,7 @@ function Sorting() {
           onClick={() => {
             sort(SORTBY.RECENTS);
           }}
-          className={`hsort ${sortBy === SORTBY.RECENTS ? 'bold' : ''}`}
+          className={`hsort ${sortBy === SORTBY.RECENTS ? 'fw-bold' : ''}`}
         >
           Most Recent
         </span>
@@ -30,7 +30,7 @@ function Sorting() {
           onClick={() => {
             sort(SORTBY.LIKES);
           }}
-          className={`hsort ${sortBy === SORTBY.LIKES ? 'bold' : ''}`}
+          className={`hsort ${sortBy === SORTBY.LIKES ? 'fw-bold' : ''}`}
         >
           Most Liked
         </span>

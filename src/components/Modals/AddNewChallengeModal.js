@@ -64,7 +64,7 @@ function AddNewChallengeModal({open, onclose}) {
   };
 
   return ReactDOM.createPortal(
-    <dialog className="hModal" ref={modalRef}>
+    <dialog className="hModal shadow rounded" ref={modalRef}>
       <h5 className="mb-3">Add New Challenge</h5>
       <form onSubmit={submitForm}>
         <div className="mb-3">

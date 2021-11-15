@@ -17,7 +17,7 @@ function ChallengesListItem({challenge, onClick, onLike, onDisLike}) {
 
   return (
     <div
-      className="ChallengesListItem"
+      className="ChallengesListItem rounded border shadow-sm mb-2 p-4"
       onClick={() => {
         onClick(challenge);
       }}

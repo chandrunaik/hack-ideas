@@ -13,7 +13,7 @@ function ViewChallengeModal({open, challenge, onclose}) {
   }, [open]);
 
   return ReactDOM.createPortal(
-    <dialog className="hModal" ref={modalRef}>
+    <dialog className="hModal shadow rounded" ref={modalRef}>
       <h5 className="mb-3 title">{challenge.title}</h5>
       <p className="addedByLabel">Added by: {challenge.createdBy}</p>
       <p className="mb-3 description">{challenge.description}</p>
